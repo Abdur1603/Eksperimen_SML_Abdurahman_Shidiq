@@ -5,18 +5,16 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
 
 def load_data(filepath):
-    """Memuat dataset dari file CSV."""
     print(f"Loading data from {filepath}...")
     return pd.read_csv(filepath)
 
 def clean_and_encode_data(df):
-    """Melakukan pembersihan data dan encoding."""
     print("Cleaning and Encoding data...")
-    
-    df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
 
-    df.dropna(inplace=True)
+    df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
     
+    df['TotalCharges'].fillna(0, inplace=True) 
+
     if 'customerID' in df.columns:
         df.drop('customerID', axis=1, inplace=True)
     
