@@ -29,7 +29,6 @@ def clean_and_encode_data(df):
     return df
 
 def scale_and_split_data(df, target_col='Churn'):
-    """Melakukan scaling dan split data train/test."""
     print("Scaling and Splitting data...")
     
     X = df.drop(target_col, axis=1)
@@ -50,7 +49,6 @@ def scale_and_split_data(df, target_col='Churn'):
     return X_train, X_test, y_train, y_test
 
 def save_data(X_train, X_test, y_train, y_test, output_dir):
-    """Menyimpan data yang sudah diproses."""
     print(f"Saving processed data to {output_dir}...")
     
     os.makedirs(output_dir, exist_ok=True)
